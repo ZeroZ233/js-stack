@@ -28,9 +28,7 @@
         "flow-bin": "^0.126.1",
         "husky": "^4.2.5",
         "jest": "^26.0.1",
-        "react": "^16.13.1",
-        "webpack": "^4.43.0",
-        "webpack-cli": "^3.3.11"
+        "react": "^16.13.1"
     },
     "browserslist": [
         "> 1%"
