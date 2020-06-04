@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-        "start": "babel-node src/server",
+        "start": "yarn dev:start",
+        "dev:start": "nodemon --ignore lib --exec babel-node src/server",
         "test": "eslint src && flow && jest --coverage"
     },
     "husky": {
@@ -35,6 +36,7 @@
         "flow-bin": "^0.126.1",
         "husky": "^4.2.5",
         "jest": "^26.0.1",
+        "nodemon": "^2.0.4",
         "react": "^16.13.1"
     },
     "browserslist": [
