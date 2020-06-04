@@ -4,9 +4,11 @@
     "license": "MIT",
     "scripts": {
         "start": "yarn dev:start",
-        "dev:start": "nodemon --ignore lib --exec babel-node src/server",
+        "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
+        "dev:wds": "webpack-dev-server --progress",
         "test": "eslint src && flow && jest --coverage",
-        "prod:build": "rimraf lib && babel src -d lib --ignore .test.js",
+        "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
+        "prod:build": "rimraf lib dist && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
         "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
         "prod:stop": "pm2 delete server"
     },
@@ -16,18 +18,20 @@
         }
     },
     "dependencies": {
+        "babel-polyfill": "^6.26.0",
         "compression": "^1.7.4",
         "express": "^4.17.1"
     },
     "devDependencies": {
         "@babel/cli": "^7.10.1",
-        "@babel/core": "^7.10.2",
         "@babel/node": "^7.10.1",
         "@babel/preset-env": "^7.10.2",
         "@babel/preset-flow": "^7.10.1",
         "@babel/preset-react": "^7.10.1",
+        "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^26.0.1",
+        "babel-loader": "7",
         "cross-env": "^7.0.2",
         "eslint": "^7.1.0",
         "eslint-config-airbnb": "^18.1.0",
@@ -43,7 +47,10 @@
         "nodemon": "^2.0.4",
         "pm2": "^4.4.0",
         "react": "^16.13.1",
-        "rimraf": "^3.0.2"
+        "rimraf": "^3.0.2",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.11.0"
     },
     "browserslist": [
         "> 1%"
