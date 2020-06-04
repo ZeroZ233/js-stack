@@ -3,21 +3,25 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-        "start": "babel-node src",
+        "start": "babel-node src/server",
         "test": "eslint src && flow && jest --coverage"
     },
     "husky": {
-      "hooks": {
-        "pre-commit": "yarn test"
-      }
+        "hooks": {
+            "pre-commit": "yarn test"
+        }
     },
-    "dependencies": {},
+    "dependencies": {
+        "compression": "^1.7.4",
+        "express": "^4.17.1"
+    },
     "devDependencies": {
+        "@babel/cli": "^7.10.1",
         "@babel/core": "^7.10.2",
+        "@babel/node": "^7.10.1",
         "@babel/preset-env": "^7.10.2",
         "@babel/preset-flow": "^7.10.1",
         "@babel/preset-react": "^7.10.1",
-        "babel-cli": "^6.26.0",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^26.0.1",
         "eslint": "^7.1.0",
